@@ -1,8 +1,8 @@
-package co.edu.uco.ucobet.generales.application.useCase.city.impl;
+package co.edu.uco.ucobet.generales.application.useCase.city.listcities.impl;
 
 import co.edu.uco.ucobet.generales.application.secondaryports.mapper.CityEntityMapper;
 import co.edu.uco.ucobet.generales.application.secondaryports.repository.CityRepository;
-import co.edu.uco.ucobet.generales.application.useCase.city.ListCities;
+import co.edu.uco.ucobet.generales.application.useCase.city.listcities.ListCities;
 import co.edu.uco.ucobet.generales.domain.city.CityDomain;
 import org.springframework.stereotype.Service;
 

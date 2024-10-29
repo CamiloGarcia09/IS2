@@ -1,7 +1,7 @@
 package co.edu.uco.ucobet.generales.infrastructure.primaryadapters.controller.rest.city;
 
 import co.edu.uco.ucobet.generales.application.primaryports.dto.ListCityDTO;
-import co.edu.uco.ucobet.generales.application.primaryports.interactor.city.ListCitiesInteractor;
+import co.edu.uco.ucobet.generales.application.primaryports.interactor.city.listcities.ListCitiesInteractor;
 import co.edu.uco.ucobet.generales.infrastructure.primaryadapters.controller.response.ListCityResponse;
 import co.edu.uco.ucobet.generales.crosscutting.exceptions.UCOBETException;
 import org.springframework.http.HttpStatus;

@@ -1,9 +1,9 @@
-package co.edu.uco.ucobet.generales.application.useCase.city.impl;
+package co.edu.uco.ucobet.generales.application.useCase.city.registercity.impl;
 
-import co.edu.uco.ucobet.generales.application.useCase.city.RegisterNewCityIdRulesValidator;
-import co.edu.uco.ucobet.generales.application.useCase.city.RegisterNewCityNameRulesValidator;
-import co.edu.uco.ucobet.generales.application.useCase.city.RegisterNewCityRulesValidator;
-import co.edu.uco.ucobet.generales.application.useCase.city.RegisterNewCityStateRulesValidator;
+import co.edu.uco.ucobet.generales.application.useCase.city.registercity.RegisterNewCityIdRulesValidator;
+import co.edu.uco.ucobet.generales.application.useCase.city.registercity.RegisterNewCityNameRulesValidator;
+import co.edu.uco.ucobet.generales.application.useCase.city.registercity.RegisterNewCityRulesValidator;
+import co.edu.uco.ucobet.generales.application.useCase.city.registercity.RegisterNewCityStateRulesValidator;
 import co.edu.uco.ucobet.generales.domain.city.CityDomain;
 import org.springframework.stereotype.Service;
 
