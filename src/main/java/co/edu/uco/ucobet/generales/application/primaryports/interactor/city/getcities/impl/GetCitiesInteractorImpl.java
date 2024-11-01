@@ -21,7 +21,7 @@ public class GetCitiesInteractorImpl implements GetCitiesInteractor {
     }
 
     @Override
-    public List<GetCityDTO> execute(Void data) {
+    public List<GetCityDTO> execute(GetCityDTO data) {
 
     return getCities.execute(null).stream()
                 .map(CityDTOMapper.INSTANCE::toListCityDTO)

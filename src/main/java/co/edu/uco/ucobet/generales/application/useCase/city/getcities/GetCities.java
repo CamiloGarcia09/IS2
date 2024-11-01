@@ -5,5 +5,5 @@ import co.edu.uco.ucobet.generales.domain.city.CityDomain;
 
 import java.util.List;
 
-public interface GetCities extends UseCaseWithReturn<Void, List<CityDomain>> {
+public interface GetCities extends UseCaseWithReturn<CityDomain, List<CityDomain>> {
 }

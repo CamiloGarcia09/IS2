@@ -5,6 +5,6 @@ import co.edu.uco.ucobet.generales.application.primaryports.interactor.Interacto
 
 import java.util.List;
 
-public interface GetCitiesInteractor extends InteractorWithReturn<Void, List<GetCityDTO>> {
+public interface GetCitiesInteractor extends InteractorWithReturn<GetCityDTO, List<GetCityDTO>> {
 
 }

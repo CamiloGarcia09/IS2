@@ -20,7 +20,7 @@ public final class GetCitiesImpl implements GetCities {
     }
 
     @Override
-    public List<CityDomain> execute(Void domain) {
+    public List<CityDomain> execute(CityDomain domain) {
         return cityRepository.findAll().stream()
                 .map(CityEntityMapper.INSTANCE::toDomain)
                 .collect(Collectors.toList());
