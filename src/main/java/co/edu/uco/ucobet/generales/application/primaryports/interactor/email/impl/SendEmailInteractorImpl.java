@@ -1,9 +1,9 @@
-package co.edu.uco.ucobet.generales.application.primaryports.interactor.email.sendemail.impl;
+package co.edu.uco.ucobet.generales.application.primaryports.interactor.email.impl;
 
 import co.edu.uco.ucobet.generales.application.primaryports.dto.EmailDataDTO;
-import co.edu.uco.ucobet.generales.application.primaryports.interactor.email.sendemail.SendEmailInteractor;
+import co.edu.uco.ucobet.generales.application.primaryports.interactor.email.SendEmailInteractor;
 import co.edu.uco.ucobet.generales.application.primaryports.mapper.EmailDataMapper;
-import co.edu.uco.ucobet.generales.application.useCase.email.sendemail.SendEmail;
+import co.edu.uco.ucobet.generales.application.useCase.email.SendEmail;
 import co.edu.uco.ucobet.generales.domain.EmailData;
 import org.springframework.stereotype.Service;
 

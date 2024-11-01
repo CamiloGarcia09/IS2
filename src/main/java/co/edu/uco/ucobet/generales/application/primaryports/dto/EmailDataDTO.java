@@ -2,7 +2,7 @@ package co.edu.uco.ucobet.generales.application.primaryports.dto;
 
 import co.edu.uco.ucobet.generales.crosscutting.helpers.TextHelper;
 
-public class EmailDataDTO {
+public final class EmailDataDTO {
 
     private String to;
     private String subject;

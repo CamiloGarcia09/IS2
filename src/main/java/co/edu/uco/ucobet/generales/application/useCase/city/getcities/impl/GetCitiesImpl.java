@@ -1,8 +1,8 @@
-package co.edu.uco.ucobet.generales.application.useCase.city.listcities.impl;
+package co.edu.uco.ucobet.generales.application.useCase.city.getcities.impl;
 
 import co.edu.uco.ucobet.generales.application.secondaryports.mapper.CityEntityMapper;
 import co.edu.uco.ucobet.generales.application.secondaryports.repository.CityRepository;
-import co.edu.uco.ucobet.generales.application.useCase.city.listcities.ListCities;
+import co.edu.uco.ucobet.generales.application.useCase.city.getcities.GetCities;
 import co.edu.uco.ucobet.generales.domain.city.CityDomain;
 import org.springframework.stereotype.Service;
 
@@ -11,11 +11,11 @@ import java.util.stream.Collectors;
 
 
 @Service
-public final class ListCitiesImpl implements ListCities {
+public final class GetCitiesImpl implements GetCities {
 
     private final CityRepository cityRepository;
 
-    public ListCitiesImpl(CityRepository cityRepository) {
+    public GetCitiesImpl(CityRepository cityRepository) {
         this.cityRepository = cityRepository;
     }
 

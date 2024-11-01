@@ -1,6 +1,7 @@
-package co.edu.uco.ucobet.generales.infrastructure.primaryadapters.controller.response;
+package co.edu.uco.ucobet.generales.infrastructure.primaryadapters.controller.response.city;
 
 import co.edu.uco.ucobet.generales.application.primaryports.dto.RegisterNewCityDTO;
+import co.edu.uco.ucobet.generales.infrastructure.primaryadapters.controller.response.Response;
 
 import java.util.ArrayList;
 

@@ -1,6 +1,6 @@
 package co.edu.uco.ucobet.generales.application.primaryports.mapper;
 
-import co.edu.uco.ucobet.generales.application.primaryports.dto.ListCityDTO;
+import co.edu.uco.ucobet.generales.application.primaryports.dto.GetCityDTO;
 import co.edu.uco.ucobet.generales.application.primaryports.dto.RegisterNewCityDTO;
 import co.edu.uco.ucobet.generales.domain.city.CityDomain;
 import co.edu.uco.ucobet.generales.domain.state.StateDomain;
@@ -22,7 +22,7 @@ public interface CityDTOMapper {
 
     @Mapping(source = "name", target = "cityName")
     @Mapping(source = "state.name", target = "stateName")
-    ListCityDTO toListCityDTO(CityDomain domain);
+    GetCityDTO toListCityDTO(CityDomain domain);
 
     @Named("mapToStateDomain")
     default StateDomain mapToStateDomain(UUID stateId) {

@@ -1,4 +1,6 @@
-package co.edu.uco.ucobet.generales.infrastructure.primaryadapters.controller.response;
+package co.edu.uco.ucobet.generales.infrastructure.primaryadapters.controller.response.email;
+
+import co.edu.uco.ucobet.generales.infrastructure.primaryadapters.controller.response.Response;
 
 import java.util.ArrayList;
 

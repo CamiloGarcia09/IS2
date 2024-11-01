@@ -1,8 +1,8 @@
 package co.edu.uco.ucobet.generales.infrastructure.primaryadapters.controller.rest.city;
 
-import co.edu.uco.ucobet.generales.application.primaryports.dto.ListCityDTO;
-import co.edu.uco.ucobet.generales.application.primaryports.interactor.city.listcities.ListCitiesInteractor;
-import co.edu.uco.ucobet.generales.infrastructure.primaryadapters.controller.response.ListCityResponse;
+import co.edu.uco.ucobet.generales.application.primaryports.dto.GetCityDTO;
+import co.edu.uco.ucobet.generales.application.primaryports.interactor.city.getcities.GetCitiesInteractor;
+import co.edu.uco.ucobet.generales.infrastructure.primaryadapters.controller.response.city.GetCityResponse;
 import co.edu.uco.ucobet.generales.crosscutting.exceptions.UCOBETException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -14,22 +14,22 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/general/api/v1/cities")
-public class ListCitiesController {
+public class GetCitiesController {
 
-    private final ListCitiesInteractor listCitiesInteractor;
+    private final GetCitiesInteractor getCitiesInteractor;
 
-    public ListCitiesController(final ListCitiesInteractor listCitiesInteractor) {
-        this.listCitiesInteractor = listCitiesInteractor;
+    public GetCitiesController(final GetCitiesInteractor getCitiesInteractor) {
+        this.getCitiesInteractor = getCitiesInteractor;
     }
 
     @GetMapping
-    public ResponseEntity<ListCityResponse> execute() {
+    public ResponseEntity<GetCityResponse> execute() {
         var httpStatusCode = HttpStatus.OK;
-        var cityResponse = new ListCityResponse();
+        var cityResponse = new GetCityResponse();
 
         try {
             // Ejecuta el interactor para obtener la lista de ciudades
-            List<ListCityDTO> cities = listCitiesInteractor.execute(null);
+            List<GetCityDTO> cities = getCitiesInteractor.execute(null);
             cityResponse.setDatos(cities);
             cityResponse.getMensajes().add("Lista de ciudades obtenida exitosamente.");
 

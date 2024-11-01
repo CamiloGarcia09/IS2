@@ -1,5 +1,4 @@
-package co.edu.uco.ucobet.generales.infrastructure.secondaryadapters.sendgrid;
-
+package co.edu.uco.ucobet.generales.infrastructure.secondaryadapters.notificationservice;
 
 import co.edu.uco.ucobet.generales.crosscutting.exceptions.SendgridUCOBETException;
 import com.sendgrid.Method;

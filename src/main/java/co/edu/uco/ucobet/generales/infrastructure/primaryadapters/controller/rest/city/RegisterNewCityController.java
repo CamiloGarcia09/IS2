@@ -3,7 +3,7 @@ package co.edu.uco.ucobet.generales.infrastructure.primaryadapters.controller.re
 import co.edu.uco.ucobet.generales.application.primaryports.dto.RegisterNewCityDTO;
 import co.edu.uco.ucobet.generales.application.primaryports.interactor.city.registercity.RegisterNewCityInteractor;
 import co.edu.uco.ucobet.generales.crosscutting.exceptions.UCOBETException;
-import co.edu.uco.ucobet.generales.infrastructure.primaryadapters.controller.response.RegisterCityResponse;
+import co.edu.uco.ucobet.generales.infrastructure.primaryadapters.controller.response.city.RegisterCityResponse;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;

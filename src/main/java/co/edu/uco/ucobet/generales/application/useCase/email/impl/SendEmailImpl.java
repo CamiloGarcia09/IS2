@@ -1,9 +1,9 @@
-package co.edu.uco.ucobet.generales.application.useCase.email.sendemail.impl;
+package co.edu.uco.ucobet.generales.application.useCase.email.impl;
 
-import co.edu.uco.ucobet.generales.application.useCase.email.sendemail.SendEmail;
+import co.edu.uco.ucobet.generales.application.useCase.email.SendEmail;
 import co.edu.uco.ucobet.generales.crosscutting.exceptions.SendgridUCOBETException;
 import co.edu.uco.ucobet.generales.domain.EmailData;
-import co.edu.uco.ucobet.generales.infrastructure.secondaryadapters.sendgrid.EmailSender;
+import co.edu.uco.ucobet.generales.infrastructure.secondaryadapters.notificationservice.EmailSender;
 import org.springframework.stereotype.Service;
 
 @Service

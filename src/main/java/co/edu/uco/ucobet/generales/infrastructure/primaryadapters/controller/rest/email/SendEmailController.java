@@ -1,9 +1,9 @@
 package co.edu.uco.ucobet.generales.infrastructure.primaryadapters.controller.rest.email;
 
 import co.edu.uco.ucobet.generales.application.primaryports.dto.EmailDataDTO;
-import co.edu.uco.ucobet.generales.application.primaryports.interactor.email.sendemail.SendEmailInteractor;
+import co.edu.uco.ucobet.generales.application.primaryports.interactor.email.SendEmailInteractor;
 import co.edu.uco.ucobet.generales.crosscutting.exceptions.UCOBETException;
-import co.edu.uco.ucobet.generales.infrastructure.primaryadapters.controller.response.SendEmailResponse;
+import co.edu.uco.ucobet.generales.infrastructure.primaryadapters.controller.response.email.SendEmailResponse;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
