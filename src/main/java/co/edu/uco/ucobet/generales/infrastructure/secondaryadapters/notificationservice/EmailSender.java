@@ -37,10 +37,6 @@ public class EmailSender {
             request.setBody(mail.build());
             Response response = sg.api(request);
 
-            // Opcional: Maneja el log de respuesta para depuración
-            System.out.println(response.getStatusCode());
-            System.out.println(response.getBody());
-            System.out.println(response.getHeaders());
         } catch (IOException  exception) {
             throw  SendgridUCOBETException.create("Error al enviar el correo");
         }

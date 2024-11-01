@@ -2,20 +2,20 @@ package co.edu.uco.ucobet.generales.application.primaryports.dto;
 
 import co.edu.uco.ucobet.generales.crosscutting.helpers.TextHelper;
 
-public final class EmailDataDTO {
+public final class SendEmailDTO {
 
     private String to;
     private String subject;
     private String content;
 
-    public EmailDataDTO(final String to, final String subject, final String content) {
+    public SendEmailDTO(final String to, final String subject, final String content) {
         setTo(to);
         setSubject(subject);
         setContent(content);
     }
 
-    public static EmailDataDTO create (final String to, final String subject, final String content) {
-        return new EmailDataDTO(to, subject,content);
+    public static SendEmailDTO create (final String to, final String subject, final String content) {
+        return new SendEmailDTO(to, subject,content);
     }
 
     public String getTo() {

@@ -1,6 +1,6 @@
 package co.edu.uco.ucobet.generales.infrastructure.primaryadapters.controller.rest.email;
 
-import co.edu.uco.ucobet.generales.application.primaryports.dto.EmailDataDTO;
+import co.edu.uco.ucobet.generales.application.primaryports.dto.SendEmailDTO;
 import co.edu.uco.ucobet.generales.application.primaryports.interactor.email.SendEmailInteractor;
 import co.edu.uco.ucobet.generales.crosscutting.exceptions.UCOBETException;
 import co.edu.uco.ucobet.generales.infrastructure.primaryadapters.controller.response.email.SendEmailResponse;
@@ -22,13 +22,13 @@ public class SendEmailController {
     }
 
     @PostMapping("/send")
-    public ResponseEntity<SendEmailResponse> sendEmail(@RequestBody EmailDataDTO emailDataDTO) {
+    public ResponseEntity<SendEmailResponse> sendEmail(@RequestBody SendEmailDTO sendEmailDTO) {
         var httpStatusCode = HttpStatus.OK;
         var emailResponse = new SendEmailResponse();
 
         try {
             // Ejecuta el interactor para enviar el email
-            sendEmailInteractor.execute(emailDataDTO);
+            sendEmailInteractor.execute(sendEmailDTO);
             emailResponse.getMensajes().add("Correo enviado exitosamente.");
 
         } catch (UCOBETException excepcion) {

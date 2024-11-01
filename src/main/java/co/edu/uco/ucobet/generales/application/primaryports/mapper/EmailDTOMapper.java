@@ -1,14 +1,14 @@
 package co.edu.uco.ucobet.generales.application.primaryports.mapper;
 
-import co.edu.uco.ucobet.generales.application.primaryports.dto.EmailDataDTO;
+import co.edu.uco.ucobet.generales.application.primaryports.dto.SendEmailDTO;
 import co.edu.uco.ucobet.generales.domain.EmailData;
 import org.mapstruct.Mapper;
 import org.mapstruct.factory.Mappers;
 
 @Mapper(componentModel = "spring")
-public interface EmailDataMapper {
+public interface EmailDTOMapper {
 
-    EmailDataMapper INSTANCE = Mappers.getMapper(EmailDataMapper.class);
+    EmailDTOMapper INSTANCE = Mappers.getMapper(EmailDTOMapper.class);
 
-    EmailData toDomain(EmailDataDTO dto);
+    EmailData toDomain(SendEmailDTO dto);
 }
