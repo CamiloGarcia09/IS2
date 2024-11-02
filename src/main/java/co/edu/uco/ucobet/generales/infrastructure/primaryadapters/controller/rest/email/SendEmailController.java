@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/api/v1/email")
+@RequestMapping("/general/api/v1/email")
 public class SendEmailController {
 
     private final SendEmailInteractor sendEmailInteractor;

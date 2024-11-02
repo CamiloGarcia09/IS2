@@ -33,7 +33,7 @@ public class EmailSender {
 
         try {
             request.setMethod(Method.POST);
-            request.setEndpoint("mail/send");  //Endpoint para enviar los correos
+            request.setEndpoint("mail/send");
             request.setBody(mail.build());
             Response response = sg.api(request);
 
