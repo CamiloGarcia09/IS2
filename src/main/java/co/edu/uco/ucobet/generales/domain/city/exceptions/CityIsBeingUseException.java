@@ -6,12 +6,12 @@ public final class CityIsBeingUseException extends RuleUCOBETException {
 
     private static final long serialVersionUID = 1L;
 
-    public CityIsBeingUseException(final String userMessage ) {
+    private CityIsBeingUseException(final String userMessage ) {
         super(userMessage, userMessage, new Exception());
     }
 
     public static CityIsBeingUseException create(){
-        var userMessage = "City is already being used";
+        var userMessage = "La ciudad ya se encuentra en uso";
         return new CityIsBeingUseException(userMessage);
     }
 }

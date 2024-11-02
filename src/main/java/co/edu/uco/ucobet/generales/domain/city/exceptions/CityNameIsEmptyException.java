@@ -11,7 +11,7 @@ public final class CityNameIsEmptyException extends RuleUCOBETException {
     }
 
     public static CityNameIsEmptyException create(){
-        var userMessage = "City name is empty";
+        var userMessage = "El nombre de la ciudad no puede estar vacio";
         return new CityNameIsEmptyException(userMessage);
     }
 }

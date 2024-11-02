@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 
 @Service
 public final class CityNameForStateDoesNotExistRuleImpl implements CityNameForStateDoesNotExistsRule {
+
     private final CityRepository cityRepository;
 
     public CityNameForStateDoesNotExistRuleImpl(final CityRepository cityRepository) {
@@ -17,7 +18,8 @@ public final class CityNameForStateDoesNotExistRuleImpl implements CityNameForSt
 
     @Override
     public void validate(CityDomain data) {
-        var cityEntityFilter= CityEntity.create().setName(data.getName()).setState(StateEntityMapper.INSTANCE.toEntity(data.getState()));
+        var cityEntityFilter= CityEntity.create().setName(data.getName()).
+                setState(StateEntityMapper.INSTANCE.toEntity(data.getState()));
         var resultados= cityRepository.findByFilter(cityEntityFilter);
 
         if (!resultados.isEmpty()) {

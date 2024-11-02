@@ -22,22 +22,22 @@ public class CityRepositoryCustomImpl implements CityRepositoryCustom {
 
     @Override
     public List<CityEntity> findByFilter(final CityEntity filter) {
-        try{
+        try {
             var criteriaBuilder = entityManager.getCriteriaBuilder();
             var query = criteriaBuilder.createQuery(CityEntity.class);
             var result = query.from(CityEntity.class);
 
-            var predicates = new ArrayList<>();
+            var predicates = new ArrayList<Predicate>();
 
-            if (!ObjectHelper.isNull(filter)){
-                if(!UUIDHelper.isDefault(filter.getId())){
+            if (!ObjectHelper.isNull(filter)) {
+                if (!UUIDHelper.isDefault(filter.getId())) {
                     predicates.add(criteriaBuilder.equal(result.get("id"), filter.getId()));
                 }
-                if (!TextHelper.isEmpty(filter.getName())){
-                    predicates.add(criteriaBuilder.equal((result.get("name")), filter.getName()));
+                if (!TextHelper.isEmpty(filter.getName())) {
+                    predicates.add(criteriaBuilder.equal(criteriaBuilder.upper(result.get("name")), filter.getName().toUpperCase()));
                 }
-                if (!UUIDHelper.isDefault(filter.getState().getId())){
-                    predicates.add(criteriaBuilder.equal((result.get("state")), filter.getState()));
+                if (!UUIDHelper.isDefault(filter.getState().getId())) {
+                    predicates.add(criteriaBuilder.equal(result.get("state").get("id"), filter.getState().getId()));
                 }
             }
 

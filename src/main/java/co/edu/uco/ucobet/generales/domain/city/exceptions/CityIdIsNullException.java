@@ -11,7 +11,7 @@ public final class CityIdIsNullException extends RuleUCOBETException {
     }
 
     public static CityIdIsNullException create(){
-        var usserMessage = "El ID de la ciudad es nulo";
-        return new CityIdIsNullException(usserMessage);
+        var userMessage = "El ID de la ciudad es nulo";
+        return new CityIdIsNullException(userMessage);
     }
 }

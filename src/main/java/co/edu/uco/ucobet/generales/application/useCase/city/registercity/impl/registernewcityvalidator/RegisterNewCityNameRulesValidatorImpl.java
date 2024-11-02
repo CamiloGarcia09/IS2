@@ -31,8 +31,8 @@ public final class RegisterNewCityNameRulesValidatorImpl implements RegisterNewC
 
         cityNameIsNotNullRule.validate(data.getName());
         cityNameIsNotEmptyRule.validate(data.getName());
-        cityNameLengthIsValidRule.validate(data.getName());
         cityNameFormatIsValidRule.validate(data.getName());
+        cityNameLengthIsValidRule.validate(data.getName());
         cityNameForStateDoesNotExistsRule.validate(data);
     }
 

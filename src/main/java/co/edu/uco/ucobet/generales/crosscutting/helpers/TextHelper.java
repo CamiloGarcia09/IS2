@@ -3,6 +3,7 @@ package co.edu.uco.ucobet.generales.crosscutting.helpers;
 public final class TextHelper {
 
 	public static final String EMPTY = "";
+	private static final String LETTERS_ONLY_REGEX = "^[a-zA-ZáéíóúÁÉÍÓÚñÑ]+( [a-zA-ZáéíóúÁÉÍÓÚñÑ]+)*$";
 
 	private TextHelper() {
 
@@ -40,4 +41,7 @@ public final class TextHelper {
 		return getDefault(string).toLowerCase();
 	}
 
+	public static boolean containsOnlyLetters(final String string) {
+		return string != null && string.matches(LETTERS_ONLY_REGEX);
+	}
 }

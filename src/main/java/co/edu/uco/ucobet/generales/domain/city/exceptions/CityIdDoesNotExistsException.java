@@ -11,8 +11,8 @@ public final class CityIdDoesNotExistsException extends RuleUCOBETException {
     }
 
     public static CityIdDoesNotExistsException create(){
-        var usserMessage = "No existe la ciudad con el ID indicado";
-        return new CityIdDoesNotExistsException(usserMessage);
+        var userMessage = "No existe la ciudad con el ID indicado";
+        return new CityIdDoesNotExistsException(userMessage);
     }
 
 }

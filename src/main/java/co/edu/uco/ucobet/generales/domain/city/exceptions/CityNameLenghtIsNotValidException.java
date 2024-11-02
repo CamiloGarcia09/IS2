@@ -6,12 +6,12 @@ public final class CityNameLenghtIsNotValidException extends RuleUCOBETException
 
     private static final long serialVersionUID = 1L;
 
-    public CityNameLenghtIsNotValidException(String userMessage) {
+    private CityNameLenghtIsNotValidException(String userMessage) {
         super(userMessage, userMessage, new Exception());
     }
 
     public static CityNameLenghtIsNotValidException create(){
-        var userMessage = "City name lenght is not valid";
+        var userMessage = "La longitud del nombre de la ciudad no es valido";
         return new CityNameLenghtIsNotValidException(userMessage);
     }
 }

@@ -11,7 +11,7 @@ public final class CityNameIsNullException extends RuleUCOBETException {
     }
 
     public static CityNameIsNullException create(){
-        var userMessage = "City name is null";
+        var userMessage = "El nombre de la ciudad no puede ser nulo";
         return new CityNameIsNullException(userMessage);
     }
 }

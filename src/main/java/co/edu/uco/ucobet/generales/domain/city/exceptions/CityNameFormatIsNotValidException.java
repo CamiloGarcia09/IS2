@@ -6,12 +6,12 @@ public final class CityNameFormatIsNotValidException extends RuleUCOBETException
 
     private static final long serialVersionUID = 1L;
 
-    public CityNameFormatIsNotValidException(final String userMessage) {
+    private CityNameFormatIsNotValidException(final String userMessage) {
         super(userMessage, userMessage, new Exception());
     }
 
     public static CityNameFormatIsNotValidException create(){
-        var userMessage = "City name format is not valid";
+        var userMessage = "El nombre que estas ingresando, no tiene un formato valido";
         return new CityNameFormatIsNotValidException(userMessage);
     }
 }
