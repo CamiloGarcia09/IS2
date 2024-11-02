@@ -33,7 +33,8 @@ public final class StateEntity {
         setCountry(country);
     }
 
-    static StateEntity create() {
+    //Metodo mono
+    public static StateEntity create() {
         return new StateEntity();
     }
 
@@ -57,16 +58,19 @@ public final class StateEntity {
         return country;
     }
 
-    public void setId(final UUID id) {
+    public StateEntity setId(final UUID id) {
         this.id = UUIDHelper.getDefault(id, UUIDHelper.getDefault());
+        return this;
     }
 
-    public void setName(final String name) {
+    public StateEntity setName(final String name) {
         this.name = TextHelper.applyTrim(name);
+        return this;
     }
 
-    public void setCountry(final CountryEntity country) {
+    public StateEntity setCountry(final CountryEntity country) {
         this.country = ObjectHelper.getDefault(country, CountryEntity.create());
+        return this;
     }
 
 }

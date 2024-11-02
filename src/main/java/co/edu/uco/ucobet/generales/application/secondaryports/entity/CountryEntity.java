@@ -30,7 +30,8 @@ public final class CountryEntity {
         setName(name);
     }
 
-    static CountryEntity create(){
+    //Metodo mono
+    public static CountryEntity create(){
         return new CountryEntity();
     }
 
@@ -50,12 +51,14 @@ public final class CountryEntity {
         return name;
     }
 
-    public void setId(final UUID id) {
+    public CountryEntity setId(final UUID id) {
         this.id = UUIDHelper.getDefault(id, UUIDHelper.getDefault());
+        return this;
     }
 
-    public void setName(String name) {
+    public CountryEntity setName(String name) {
         this.name = TextHelper.applyTrim(name);
+        return this;
     }
 
 }
