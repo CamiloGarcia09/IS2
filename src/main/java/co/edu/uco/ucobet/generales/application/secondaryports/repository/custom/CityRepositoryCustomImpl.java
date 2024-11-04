@@ -5,6 +5,7 @@ import co.edu.uco.ucobet.generales.crosscutting.exceptions.RepositoryUCOBETExcep
 import co.edu.uco.ucobet.generales.crosscutting.helpers.ObjectHelper;
 import co.edu.uco.ucobet.generales.crosscutting.helpers.TextHelper;
 import co.edu.uco.ucobet.generales.crosscutting.helpers.UUIDHelper;
+import co.edu.uco.ucobet.generales.infrastructure.secondaryadapters.redis.MessageHelper;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.criteria.Predicate;
 
@@ -45,7 +46,8 @@ public class CityRepositoryCustomImpl implements CityRepositoryCustom {
             return entityManager.createQuery(query).getResultList();
 
         }catch (final Exception exception){
-            throw RepositoryUCOBETException.create(null, null, exception);
+            throw RepositoryUCOBETException.create(MessageHelper.getMessage("M002"),
+                    MessageHelper.getMessage("M003"), exception);
         }
     }
 
@@ -63,8 +65,8 @@ public class CityRepositoryCustomImpl implements CityRepositoryCustom {
             return count > 0;
 
         } catch (final Exception exception) {
-            throw RepositoryUCOBETException.create("Error al verificar si la ciudad está siendo utilizada", null,
-                    exception);
+            throw RepositoryUCOBETException.create(MessageHelper.getMessage("M004"),
+                     MessageHelper.getMessage("M005"), exception);
         }
     }
 }

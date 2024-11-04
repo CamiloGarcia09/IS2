@@ -4,6 +4,7 @@ import co.edu.uco.ucobet.generales.application.primaryports.dto.GetCityDTO;
 import co.edu.uco.ucobet.generales.application.primaryports.interactor.city.getcities.GetCitiesInteractor;
 import co.edu.uco.ucobet.generales.infrastructure.primaryadapters.controller.response.city.GetCityResponse;
 import co.edu.uco.ucobet.generales.crosscutting.exceptions.UCOBETException;
+import co.edu.uco.ucobet.generales.infrastructure.secondaryadapters.redis.MessageHelper;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -31,7 +32,7 @@ public class GetCitiesController {
             // Ejecuta el interactor para obtener la lista de ciudades
             List<GetCityDTO> cities = getCitiesInteractor.execute(null);
             cityResponse.setDatos(cities);
-            cityResponse.getMensajes().add("Lista de ciudades obtenida exitosamente.");
+            cityResponse.getMensajes().add(MessageHelper.getMessage("M019"));
 
         } catch (final UCOBETException excepcion) {
             httpStatusCode = HttpStatus.BAD_REQUEST;
@@ -40,7 +41,7 @@ public class GetCitiesController {
 
         } catch (final Exception excepcion) {
             httpStatusCode = HttpStatus.INTERNAL_SERVER_ERROR;
-            cityResponse.getMensajes().add("Se ha presentado un problema tratando de obtener la lista de ciudades.");
+            cityResponse.getMensajes().add(MessageHelper.getMessage("M020"));
             excepcion.printStackTrace();
         }
 

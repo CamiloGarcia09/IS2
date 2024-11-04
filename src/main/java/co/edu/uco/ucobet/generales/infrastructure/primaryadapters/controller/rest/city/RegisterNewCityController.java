@@ -3,6 +3,7 @@ package co.edu.uco.ucobet.generales.infrastructure.primaryadapters.controller.re
 import co.edu.uco.ucobet.generales.application.primaryports.dto.RegisterNewCityDTO;
 import co.edu.uco.ucobet.generales.application.primaryports.interactor.city.registercity.RegisterNewCityInteractor;
 import co.edu.uco.ucobet.generales.crosscutting.exceptions.UCOBETException;
+import co.edu.uco.ucobet.generales.infrastructure.secondaryadapters.redis.MessageHelper;
 import co.edu.uco.ucobet.generales.infrastructure.primaryadapters.controller.response.city.RegisterCityResponse;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -19,7 +20,7 @@ public class RegisterNewCityController {
         this.registerNewCityInteractor=registerNewCityInteractor;
     }
 
-    @PostMapping
+    @PostMapping("/registerNewCity")
     public ResponseEntity<RegisterCityResponse> execute(@RequestBody RegisterNewCityDTO dto) {
 
         var httpStatusCode = HttpStatus.ACCEPTED;
@@ -27,7 +28,7 @@ public class RegisterNewCityController {
 
         try {
             registerNewCityInteractor.execute(dto);
-            var mensajeUsuario = "Ciudad creada exitosamente";
+            var mensajeUsuario = MessageHelper.getMessage("M001");
             cityResponse.getMensajes().add(mensajeUsuario);
 
         } catch (final UCOBETException excepcion) {
@@ -38,7 +39,7 @@ public class RegisterNewCityController {
         } catch (final Exception excepcion) {
             httpStatusCode = HttpStatus.INTERNAL_SERVER_ERROR;
 
-            var mensajeUsuario = "se ha presentado un prblema tratando de registar la nueva Ciudad";
+            var mensajeUsuario = MessageHelper.getMessage("M021");
             cityResponse.getMensajes().add(mensajeUsuario);
             excepcion.printStackTrace();
 
