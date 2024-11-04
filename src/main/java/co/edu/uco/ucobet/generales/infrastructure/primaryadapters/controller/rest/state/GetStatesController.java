@@ -4,7 +4,7 @@ import co.edu.uco.ucobet.generales.application.primaryports.dto.GetStateDTO;
 import co.edu.uco.ucobet.generales.application.primaryports.interactor.state.getstate.GetStatesInteractor;
 import co.edu.uco.ucobet.generales.crosscutting.exceptions.UCOBETException;
 import co.edu.uco.ucobet.generales.infrastructure.primaryadapters.controller.response.state.GetStateResponse;
-import co.edu.uco.ucobet.generales.infrastructure.secondaryadapters.redis.MessageHelper;
+import co.edu.uco.ucobet.generales.crosscutting.helpers.MessageHelper;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;

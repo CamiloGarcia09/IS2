@@ -5,7 +5,7 @@ import co.edu.uco.ucobet.generales.crosscutting.exceptions.RepositoryUCOBETExcep
 import co.edu.uco.ucobet.generales.crosscutting.helpers.ObjectHelper;
 import co.edu.uco.ucobet.generales.crosscutting.helpers.TextHelper;
 import co.edu.uco.ucobet.generales.crosscutting.helpers.UUIDHelper;
-import co.edu.uco.ucobet.generales.infrastructure.secondaryadapters.redis.MessageHelper;
+import co.edu.uco.ucobet.generales.crosscutting.helpers.MessageHelper;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.criteria.Predicate;
 
