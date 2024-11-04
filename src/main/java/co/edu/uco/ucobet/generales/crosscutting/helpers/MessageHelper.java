@@ -1,6 +1,6 @@
 package co.edu.uco.ucobet.generales.crosscutting.helpers;
 
-import co.edu.uco.ucobet.generales.application.secondaryports.service.redis.MessageService;
+import co.edu.uco.ucobet.generales.application.secondaryports.service.message.MessageService;
 import org.springframework.stereotype.Component;
 
 @Component

@@ -1,4 +1,4 @@
-package co.edu.uco.ucobet.generales.application.secondaryports.service.redis;
+package co.edu.uco.ucobet.generales.application.secondaryports.service.message;
 
 public interface MessageService {
     String getMessage(String key);

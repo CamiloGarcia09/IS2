@@ -1,15 +1,15 @@
 package co.edu.uco.ucobet.generales.infrastructure.secondaryadapters.redis;
 
-import co.edu.uco.ucobet.generales.application.secondaryports.service.redis.MessageService;
+import co.edu.uco.ucobet.generales.application.secondaryports.service.message.MessageService;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Service;
 
 @Service
-public class MessageCatalogService implements MessageService {
+public class MessageServiceImpl implements MessageService {
 
     private final RedisTemplate<String, String> redisTemplate;
 
-    public MessageCatalogService(RedisTemplate<String, String> redisTemplate) {
+    public MessageServiceImpl(RedisTemplate<String, String> redisTemplate) {
         this.redisTemplate = redisTemplate;
     }
 
