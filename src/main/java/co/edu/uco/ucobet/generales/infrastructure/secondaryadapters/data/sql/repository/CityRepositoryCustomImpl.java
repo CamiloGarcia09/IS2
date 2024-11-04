@@ -1,4 +1,4 @@
-package co.edu.uco.ucobet.generales.application.secondaryports.repository.custom;
+package co.edu.uco.ucobet.generales.infrastructure.secondaryadapters.data.sql.repository;
 
 import co.edu.uco.ucobet.generales.application.secondaryports.entity.CityEntity;
 import co.edu.uco.ucobet.generales.crosscutting.exceptions.RepositoryUCOBETException;

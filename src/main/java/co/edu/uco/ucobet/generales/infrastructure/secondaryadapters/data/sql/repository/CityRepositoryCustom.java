@@ -1,12 +1,10 @@
-package co.edu.uco.ucobet.generales.application.secondaryports.repository.custom;
+package co.edu.uco.ucobet.generales.infrastructure.secondaryadapters.data.sql.repository;
 
 import co.edu.uco.ucobet.generales.application.secondaryports.entity.CityEntity;
-import org.springframework.stereotype.Repository;
 
 import java.util.List;
 import java.util.UUID;
 
-@Repository
 public interface CityRepositoryCustom {
 
     List<CityEntity> findByFilter(CityEntity filter);
