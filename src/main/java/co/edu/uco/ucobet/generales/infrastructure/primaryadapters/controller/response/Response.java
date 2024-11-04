@@ -1,5 +1,7 @@
 package co.edu.uco.ucobet.generales.infrastructure.primaryadapters.controller.response;
 
+import co.edu.uco.ucobet.generales.crosscutting.helpers.SanitizerHelper;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -19,5 +21,8 @@ public class Response <T>{
     }
     public final void setDatos(List<T> datos) {
         this.datos = datos;
+    }
+    public final void addMensaje(String mensaje) {
+        this.mensajes.add(SanitizerHelper.escapeForXSS(mensaje));
     }
 }

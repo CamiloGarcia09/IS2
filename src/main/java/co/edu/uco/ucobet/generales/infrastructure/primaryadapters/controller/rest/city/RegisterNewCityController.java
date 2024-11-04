@@ -4,6 +4,7 @@ import co.edu.uco.ucobet.generales.application.primaryports.dto.RegisterNewCityD
 import co.edu.uco.ucobet.generales.application.primaryports.interactor.city.registercity.RegisterNewCityInteractor;
 import co.edu.uco.ucobet.generales.crosscutting.exceptions.UCOBETException;
 import co.edu.uco.ucobet.generales.crosscutting.helpers.MessageHelper;
+import co.edu.uco.ucobet.generales.crosscutting.helpers.SanitizerHelper;
 import co.edu.uco.ucobet.generales.infrastructure.primaryadapters.controller.response.city.RegisterCityResponse;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -27,6 +28,7 @@ public class RegisterNewCityController {
         var cityResponse = new RegisterCityResponse();
 
         try {
+            sanitizeRegisterNewCityDTO(dto);
             registerNewCityInteractor.execute(dto);
             var mensajeUsuario = MessageHelper.getMessage("M001");
             cityResponse.getMensajes().add(mensajeUsuario);
@@ -46,5 +48,12 @@ public class RegisterNewCityController {
         }
 
         return new ResponseEntity<>(cityResponse, httpStatusCode);
+    }
+
+
+    private void sanitizeRegisterNewCityDTO(RegisterNewCityDTO dto) {
+        if (dto != null) {
+            dto.setCityName(SanitizerHelper.sanitizeInput(dto.getCityName()));
+        }
     }
 }

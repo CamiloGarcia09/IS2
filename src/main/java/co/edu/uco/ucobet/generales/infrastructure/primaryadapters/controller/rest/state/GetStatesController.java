@@ -3,6 +3,7 @@ package co.edu.uco.ucobet.generales.infrastructure.primaryadapters.controller.re
 import co.edu.uco.ucobet.generales.application.primaryports.dto.GetStateDTO;
 import co.edu.uco.ucobet.generales.application.primaryports.interactor.state.getstate.GetStatesInteractor;
 import co.edu.uco.ucobet.generales.crosscutting.exceptions.UCOBETException;
+import co.edu.uco.ucobet.generales.crosscutting.helpers.SanitizerHelper;
 import co.edu.uco.ucobet.generales.infrastructure.primaryadapters.controller.response.state.GetStateResponse;
 import co.edu.uco.ucobet.generales.crosscutting.helpers.MessageHelper;
 import org.springframework.http.HttpStatus;
@@ -32,7 +33,8 @@ public class GetStatesController {
             // Ejecuta el interactor para obtener la lista de ciudades
             List<GetStateDTO> states = getStatesInteractor.execute(null);
             stateResponse.setDatos(states);
-            stateResponse.getMensajes().add(MessageHelper.getMessage("M022"));
+            var mensajeUsuario = MessageHelper.getMessage("M022");
+            stateResponse.getMensajes().add(mensajeUsuario);
 
         } catch (final UCOBETException excepcion) {
             httpStatusCode = HttpStatus.BAD_REQUEST;
@@ -41,7 +43,8 @@ public class GetStatesController {
 
         } catch (final Exception excepcion) {
             httpStatusCode = HttpStatus.INTERNAL_SERVER_ERROR;
-            stateResponse.getMensajes().add(MessageHelper.getMessage("M023"));
+            var mensajeUsuario = MessageHelper.getMessage("M023");
+            stateResponse.getMensajes().add(mensajeUsuario);
             excepcion.printStackTrace();
         }
 
