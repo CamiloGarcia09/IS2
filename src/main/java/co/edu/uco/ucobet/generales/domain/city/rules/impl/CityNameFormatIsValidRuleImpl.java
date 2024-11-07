@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 @Service
 public final class CityNameFormatIsValidRuleImpl implements CityNameFormatIsValidRule {
 
+
     @Override
     public void validate(String data) {
         if (TextHelper.isEmpty(data) || !TextHelper.containsOnlyLetters(data)) {

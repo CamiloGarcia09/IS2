@@ -1,4 +1,4 @@
-package co.edu.uco.ucobet.generales.infrastructure.secondaryadapters.data.sql.repository;
+package co.edu.uco.ucobet.generales.infrastructure.secondaryadapters.data.sql.repository.impl;
 
 import co.edu.uco.ucobet.generales.application.secondaryports.entity.CityEntity;
 import co.edu.uco.ucobet.generales.crosscutting.exceptions.RepositoryUCOBETException;
@@ -6,6 +6,7 @@ import co.edu.uco.ucobet.generales.crosscutting.helpers.ObjectHelper;
 import co.edu.uco.ucobet.generales.crosscutting.helpers.TextHelper;
 import co.edu.uco.ucobet.generales.crosscutting.helpers.UUIDHelper;
 import co.edu.uco.ucobet.generales.crosscutting.helpers.MessageHelper;
+import co.edu.uco.ucobet.generales.infrastructure.secondaryadapters.data.sql.repository.CityRepositoryCustom;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.criteria.Predicate;
 

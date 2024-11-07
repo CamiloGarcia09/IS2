@@ -1,4 +1,4 @@
-package co.edu.uco.ucobet.generales.application.useCase.city.registercity.impl;
+package co.edu.uco.ucobet.generales.application.useCase.city.registercity.impl.registernewcityvalidator.impl;
 
 import co.edu.uco.ucobet.generales.application.useCase.city.registercity.RegisterNewCityIdRulesValidator;
 import co.edu.uco.ucobet.generales.application.useCase.city.registercity.RegisterNewCityNameRulesValidator;

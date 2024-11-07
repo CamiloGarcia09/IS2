@@ -1,4 +1,4 @@
-package co.edu.uco.ucobet.generales.infrastructure.secondaryadapters.redis;
+package co.edu.uco.ucobet.generales.infrastructure.secondaryadapters.messageservice;
 
 import co.edu.uco.ucobet.generales.application.secondaryports.service.message.MessageService;
 import org.springframework.data.redis.core.RedisTemplate;
