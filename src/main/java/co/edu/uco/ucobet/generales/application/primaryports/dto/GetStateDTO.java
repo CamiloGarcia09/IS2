@@ -2,7 +2,7 @@ package co.edu.uco.ucobet.generales.application.primaryports.dto;
 
 import java.util.UUID;
 
-public class GetStateDTO {
+public final class GetStateDTO {
 
     private UUID id;
     private String name;

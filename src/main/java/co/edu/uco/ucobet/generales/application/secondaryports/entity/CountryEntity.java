@@ -30,7 +30,6 @@ public final class CountryEntity {
         setName(name);
     }
 
-    //Metodo mono
     public static CountryEntity create(){
         return new CountryEntity();
     }

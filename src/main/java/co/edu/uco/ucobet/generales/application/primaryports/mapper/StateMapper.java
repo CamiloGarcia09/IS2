@@ -1,8 +1,6 @@
 package co.edu.uco.ucobet.generales.application.primaryports.mapper;
 
-import co.edu.uco.ucobet.generales.application.primaryports.dto.GetCityDTO;
 import co.edu.uco.ucobet.generales.application.primaryports.dto.GetStateDTO;
-import co.edu.uco.ucobet.generales.domain.city.CityDomain;
 import co.edu.uco.ucobet.generales.domain.state.StateDomain;
 import org.mapstruct.Mapper;
 import org.mapstruct.factory.Mappers;

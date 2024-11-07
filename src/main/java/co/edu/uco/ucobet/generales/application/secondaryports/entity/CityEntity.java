@@ -36,7 +36,6 @@ public final class CityEntity {
         setState(state);
     }
 
-    //Se agrega el public si se hace con el metodo mono
     public static CityEntity create() {
         return new CityEntity();
     }

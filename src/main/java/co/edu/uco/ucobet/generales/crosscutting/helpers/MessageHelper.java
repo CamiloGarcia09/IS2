@@ -4,7 +4,7 @@ import co.edu.uco.ucobet.generales.application.secondaryports.service.message.Me
 import org.springframework.stereotype.Component;
 
 @Component
-public class MessageHelper {
+public final class MessageHelper {
 
     private static MessageService messageService;
 

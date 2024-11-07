@@ -39,33 +39,32 @@ public final class RegisterNewCityImpl implements RegisterNewCity {
     @Override
     public void execute(final CityDomain domain) {
 
-        // Registra evento: Inicio de registro de nueva ciudad
-        Map<String, String> startEventProps = new HashMap<>();
-        startEventProps.put("CityName", domain.getName());
-        telemetryService.trackEvent("RegisterNewCityStarted", startEventProps);
 
-        //Rules validation
+        Map<String, String> startEventProps = new HashMap<>();
+        startEventProps.put(MessageHelper.getMessage("M042"), domain.getName());
+        telemetryService.trackEvent(MessageHelper.getMessage("M043"), startEventProps);
+
+
         registerNewCityRulesValidator.validate(domain);
 
-        // Evento: Validación de reglas completada
-        Map<String, String> validationEventProps = new HashMap<>();
-        validationEventProps.put("CityName", domain.getName());
-        telemetryService.trackEvent("RegisterNewCityRulesValidated", validationEventProps);
 
-        //Se mappea
+        Map<String, String> validationEventProps = new HashMap<>();
+        validationEventProps.put(MessageHelper.getMessage("M042"), domain.getName());
+        telemetryService.trackEvent(MessageHelper.getMessage("M044"), validationEventProps);
+
+
         var cityEntity = CityEntityMapper.INSTANCE.toEntity(domain);
 
-        //Save City Entity
+
         cityRepository.save(cityEntity);
 
-        // Evento: Ciudad guardada en la base de datos
+
         Map<String, String> saveEventProps = new HashMap<>();
-        saveEventProps.put("CityId", cityEntity.getId().toString());
-        saveEventProps.put("CityName", cityEntity.getName());
-        telemetryService.trackEvent("RegisterNewCitySaved", saveEventProps);
+        saveEventProps.put(MessageHelper.getMessage("M045"), cityEntity.getId().toString());
+        saveEventProps.put(MessageHelper.getMessage("M042"), cityEntity.getName());
+        telemetryService.trackEvent(MessageHelper.getMessage("M046"), saveEventProps);
 
 
-        //Parametros para enviar el correo
         String subject = vaultService.getSecretValue("SUBJECT");
         String template = vaultService.getSecretValue("BODY");
         String cityName = domain.getName();
@@ -74,26 +73,18 @@ public final class RegisterNewCityImpl implements RegisterNewCity {
 
         EmailVO email = EmailVO.create(toEmail, subject, body);
         notificationService.sendEmail(email);
-        //Notificar al administrador sobre la creacion de la nueva ciudad
-        //¿Como? Notification building block
 
-        //Tegna en cuenta que:
-        //1. El correo del administrador esta en un lugar seguro (KeyVault building block)
-        //2. El asunto del correo esta en un lugar parametrizado (Parameters building block)
-        //3. El cuerpo del correo esta en un lugar parametrizado (Parameters building block)
 
-        //Cache distribuida Redis
-
-        // Evento: Correo de notificación enviado
         Map<String, String> emailEventProps = new HashMap<>();
-        emailEventProps.put("CityName", cityName);
-        emailEventProps.put("EmailRecipient", MessageHelper.getMessage("TOEMAIL"));
-        telemetryService.trackEvent("RegisterNewCityNotificationSent", emailEventProps);
+        emailEventProps.put(MessageHelper.getMessage("M042"), cityName);
+        emailEventProps.put(MessageHelper.getMessage("M047"),
+                vaultService.getSecretValue("TOEMAIL"));
+        telemetryService.trackEvent(MessageHelper.getMessage("M048"), emailEventProps);
 
-        // Evento: Fin del proceso de registro de la ciudad
+
         Map<String, String> endEventProps = new HashMap<>();
-        endEventProps.put("CityId", cityEntity.getId().toString());
-        endEventProps.put("CityName", cityEntity.getName());
-        telemetryService.trackEvent("RegisterNewCityCompleted", endEventProps);
+        endEventProps.put(MessageHelper.getMessage("M042"), cityEntity.getId().toString());
+        endEventProps.put(MessageHelper.getMessage("M042"), cityEntity.getName());
+        telemetryService.trackEvent(MessageHelper.getMessage("M049"), endEventProps);
     }
 }

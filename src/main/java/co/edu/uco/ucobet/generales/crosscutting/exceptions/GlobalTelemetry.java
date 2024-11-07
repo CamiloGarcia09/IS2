@@ -4,7 +4,7 @@ import co.edu.uco.ucobet.generales.application.secondaryports.service.telemetry.
 import org.springframework.stereotype.Component;
 
 @Component
-public class GlobalTelemetry {
+public final class GlobalTelemetry {
     private static TelemetryService telemetryService;
 
     public GlobalTelemetry(TelemetryService telemetryService) {

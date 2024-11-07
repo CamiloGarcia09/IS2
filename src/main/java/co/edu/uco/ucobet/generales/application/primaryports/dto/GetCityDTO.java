@@ -2,7 +2,6 @@ package co.edu.uco.ucobet.generales.application.primaryports.dto;
 
 import co.edu.uco.ucobet.generales.crosscutting.helpers.TextHelper;
 
-
 public final class GetCityDTO {
 
     private String cityName;

@@ -1,8 +1,11 @@
 package co.edu.uco.ucobet.generales.application.primaryports.dto;
 
+import co.edu.uco.ucobet.generales.crosscutting.helpers.TextHelper;
+import co.edu.uco.ucobet.generales.crosscutting.helpers.UUIDHelper;
+
 import java.util.UUID;
 
-public class CountryDTO {
+public final class CountryDTO {
 
     private UUID id;
     private String name;
@@ -20,11 +23,11 @@ public class CountryDTO {
         return name;
     }
 
-    public void setId(UUID id) {
-        this.id = id;
+    public void setId(final UUID id) {
+        this.id = UUIDHelper.getDefault(id, UUIDHelper.getDefault());
     }
 
     private void setName(final String name) {
-        this.name = name;
+        this.name = TextHelper.applyTrim(name);
     }
 }

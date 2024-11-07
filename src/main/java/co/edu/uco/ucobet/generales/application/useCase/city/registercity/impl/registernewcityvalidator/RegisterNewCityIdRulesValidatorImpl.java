@@ -26,5 +26,4 @@ public final class RegisterNewCityIdRulesValidatorImpl implements RegisterNewCit
         }
     }
 
-
 }

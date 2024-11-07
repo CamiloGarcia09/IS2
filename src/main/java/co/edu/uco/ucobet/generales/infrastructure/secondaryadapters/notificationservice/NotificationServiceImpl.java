@@ -2,7 +2,8 @@ package co.edu.uco.ucobet.generales.infrastructure.secondaryadapters.notificatio
 
 import co.edu.uco.ucobet.generales.application.secondaryports.service.notification.NotificationService;
 import co.edu.uco.ucobet.generales.application.secondaryports.vo.EmailVO;
-import co.edu.uco.ucobet.generales.crosscutting.exceptions.SendgridUCOBETException;
+import co.edu.uco.ucobet.generales.crosscutting.exceptions.NotificationUCOBETException;
+import co.edu.uco.ucobet.generales.crosscutting.helpers.MessageHelper;
 import com.sendgrid.Method;
 import com.sendgrid.Request;
 import com.sendgrid.Response;
@@ -16,8 +17,8 @@ import java.io.IOException;
 
 
 public class NotificationServiceImpl implements NotificationService {
-//Agregar final
-    private String apiKey;
+
+    private final String apiKey;
 
     @Value("${adminMail}")
     private String adminMail;
@@ -41,9 +42,9 @@ public class NotificationServiceImpl implements NotificationService {
             request.setBody(mail.build());
             Response response = sg.api(request);
 
-            // Puedes agregar aquí cualquier manejo de respuesta si es necesario
         } catch (IOException exception) {
-            throw SendgridUCOBETException.create("Error al enviar el correo");
+            throw NotificationUCOBETException.create(MessageHelper.getMessage("M059"),
+                    MessageHelper.getMessage("M060"), exception);
         }
     }
 }

@@ -1,6 +1,5 @@
 package co.edu.uco.ucobet.generales.application.primaryports.interactor.state.getstate.impl;
 
-
 import co.edu.uco.ucobet.generales.application.primaryports.dto.GetStateDTO;
 import co.edu.uco.ucobet.generales.application.primaryports.interactor.state.getstate.GetStatesInteractor;
 import co.edu.uco.ucobet.generales.application.primaryports.mapper.StateMapper;

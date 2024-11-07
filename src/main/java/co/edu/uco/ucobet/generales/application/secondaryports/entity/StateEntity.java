@@ -33,7 +33,6 @@ public final class StateEntity {
         setCountry(country);
     }
 
-    //Metodo mono
     public static StateEntity create() {
         return new StateEntity();
     }

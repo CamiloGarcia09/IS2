@@ -6,4 +6,5 @@ import co.edu.uco.ucobet.generales.application.primaryports.interactor.Interacto
 import java.util.List;
 
 public interface GetStatesInteractor extends InteractorWithReturn<GetStateDTO, List<GetStateDTO>> {
+
 }

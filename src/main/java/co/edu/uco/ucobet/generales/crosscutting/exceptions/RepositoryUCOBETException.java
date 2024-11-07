@@ -2,6 +2,7 @@ package co.edu.uco.ucobet.generales.crosscutting.exceptions;
 
 import co.edu.uco.ucobet.generales.application.secondaryports.service.telemetry.TelemetryService;
 import co.edu.uco.ucobet.generales.crosscutting.exceptions.enums.Layer;
+import co.edu.uco.ucobet.generales.crosscutting.helpers.MessageHelper;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -32,14 +33,13 @@ public class RepositoryUCOBETException extends UCOBETException {
     private void registerInTelemetry(String userMessage, String technicalMessage) {
         TelemetryService telemetryService = GlobalTelemetry.getTelemetryService();
         if (telemetryService != null) {
-            // Registrar la excepción en Application Insights
+
             telemetryService.trackException(this);
 
-            // Opcional: agregar propiedades personalizadas como evento
             Map<String, String> properties = new HashMap<>();
-            properties.put("UserMessage", userMessage);
-            properties.put("TechnicalMessage", technicalMessage);
-            telemetryService.trackEvent("RepositoryUCOBETException Occurred", properties);
+            properties.put(MessageHelper.getMessage("M050"), userMessage);
+            properties.put(MessageHelper.getMessage("M051"), technicalMessage);
+            telemetryService.trackEvent(MessageHelper.getMessage("M052"), properties);
         }
     }
 }

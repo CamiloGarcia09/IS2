@@ -2,7 +2,7 @@ package co.edu.uco.ucobet.generales.crosscutting.helpers;
 
 import org.apache.commons.text.StringEscapeUtils;
 
-public class SanitizerHelper {
+public final class SanitizerHelper {
 
     //Texto limpio
     public static String sanitizeInput(String input) {

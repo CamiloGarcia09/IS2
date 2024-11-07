@@ -16,7 +16,7 @@ public interface StateEntityMapper {
     StateEntity toEntity(StateDomain domain);
 
     @Mapping(source = "name", target = "name")
-    @Mapping(source = "country", target = "country")  // Ajusta el mapeo si es necesario
+    @Mapping(source = "country", target = "country")
     StateDomain toDomain(StateEntity entity);
 
     List<StateEntity> toEntityList(List<StateDomain> domainCollection);

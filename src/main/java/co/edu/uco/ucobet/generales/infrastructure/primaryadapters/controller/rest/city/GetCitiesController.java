@@ -34,30 +34,24 @@ public class GetCitiesController {
         var httpStatusCode = HttpStatus.OK;
         var cityResponse = new GetCityResponse();
 
-        telemetryService.trackEvent("GetCitiesRequestStarted");
-
         try {
-            // Ejecuta el interactor para obtener la lista de ciudades
             List<GetCityDTO> cities = getCitiesInteractor.execute(null);
             cityResponse.setDatos(cities);
             var mensajeUsuario = MessageHelper.getMessage("M019");
             cityResponse.getMensajes().add(mensajeUsuario);
 
-            // Evento: Éxito al obtener las ciudades
             Map<String, String> successProps = new HashMap<>();
-            successProps.put("CityCount", String.valueOf(cities.size()));
-            telemetryService.trackEvent("GetCitiesRequestSucceeded", successProps);
+            successProps.put(MessageHelper.getMessage("M055"), String.valueOf(cities.size()));
+            telemetryService.trackEvent(MessageHelper.getMessage("M056"), successProps);
 
         } catch (final UCOBETException excepcion) {
             httpStatusCode = HttpStatus.BAD_REQUEST;
             cityResponse.getMensajes().add(excepcion.getUserMessage());
-            excepcion.printStackTrace();
 
         } catch (final Exception excepcion) {
             httpStatusCode = HttpStatus.INTERNAL_SERVER_ERROR;
             var mensajeUsuario = MessageHelper.getMessage("M020");
             cityResponse.getMensajes().add(mensajeUsuario);
-            excepcion.printStackTrace();
         }
 
         return new ResponseEntity<>(cityResponse, httpStatusCode);

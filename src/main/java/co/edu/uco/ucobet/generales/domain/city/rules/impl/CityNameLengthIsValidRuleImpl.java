@@ -7,7 +7,7 @@ import org.springframework.stereotype.Service;
 @Service
 public final class CityNameLengthIsValidRuleImpl implements CityNameLengthIsValidRule {
 
-    private static final int MIN_NAME_LENGTH=2;
+    private static final int MIN_NAME_LENGTH=4;
     private static final int MAX_NAME_LENGTH=90;
 
     @Override
