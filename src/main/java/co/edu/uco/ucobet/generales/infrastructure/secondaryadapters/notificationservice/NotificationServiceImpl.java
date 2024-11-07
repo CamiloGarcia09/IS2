@@ -1,6 +1,7 @@
-package co.edu.uco.ucobet.generales.infrastructure.secondaryadapters.sendgrid;
+package co.edu.uco.ucobet.generales.infrastructure.secondaryadapters.notificationservice;
 
 import co.edu.uco.ucobet.generales.application.secondaryports.service.notification.NotificationService;
+import co.edu.uco.ucobet.generales.application.secondaryports.vo.EmailVO;
 import co.edu.uco.ucobet.generales.crosscutting.exceptions.SendgridUCOBETException;
 import com.sendgrid.Method;
 import com.sendgrid.Request;
@@ -15,7 +16,7 @@ import java.io.IOException;
 
 
 public class NotificationServiceImpl implements NotificationService {
-
+//Agregar final
     private String apiKey;
 
     @Value("${adminMail}")
@@ -26,11 +27,11 @@ public class NotificationServiceImpl implements NotificationService {
     }
 
     @Override
-    public void sendEmail(String to, String subject, String body) {
+    public void sendEmail(EmailVO emailVO) {
         Email from = new Email(adminMail);
-        Email recipient = new Email(to);
-        Content content = new Content("text/plain", body);
-        Mail mail = new Mail(from, subject, recipient, content);
+        Email recipient = new Email(emailVO.getTo());
+        Content content = new Content("text/plain", emailVO.getBody());
+        Mail mail = new Mail(from, emailVO.getSubject(), recipient, content);
         SendGrid sg = new SendGrid(apiKey);
         Request request = new Request();
 
@@ -40,32 +41,9 @@ public class NotificationServiceImpl implements NotificationService {
             request.setBody(mail.build());
             Response response = sg.api(request);
 
+            // Puedes agregar aquí cualquier manejo de respuesta si es necesario
         } catch (IOException exception) {
-            throw  SendgridUCOBETException.create("Error al enviar el correo");
+            throw SendgridUCOBETException.create("Error al enviar el correo");
         }
     }
-
-
-    /*
-    public void sendEmail(String to, String subject, String content) throws SendgridUCOBETException {
-        Email from = new Email("zbankproject@gmail.com");
-        Email toEmail = new Email(to);
-        Content emailContent = new Content("text/plain", content);
-        Mail mail = new Mail(from, subject, toEmail, emailContent);
-
-        SendGrid sg = new SendGrid(apiKey);
-        Request request = new Request();
-
-        try {
-            request.setMethod(Method.POST);
-            request.setEndpoint("mail/send");
-            request.setBody(mail.build());
-            Response response = sg.api(request);
-
-        } catch (IOException  exception) {
-            throw  SendgridUCOBETException.create("Error al enviar el correo");
-        }
-    }
-
-     */
 }

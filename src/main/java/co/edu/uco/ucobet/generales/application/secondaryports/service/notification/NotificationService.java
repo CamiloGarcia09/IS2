@@ -1,5 +1,7 @@
 package co.edu.uco.ucobet.generales.application.secondaryports.service.notification;
 
+import co.edu.uco.ucobet.generales.application.secondaryports.vo.EmailVO;
+
 public interface NotificationService {
-    void sendEmail(String to, String subject, String body);
+    void sendEmail(EmailVO emailVO);
 }
