@@ -2,6 +2,7 @@ package co.edu.uco.ucobet.generales.application.useCase.city.registercity.impl;
 
 import co.edu.uco.ucobet.generales.application.secondaryports.mapper.CityEntityMapper;
 import co.edu.uco.ucobet.generales.application.secondaryports.repository.CityRepository;
+import co.edu.uco.ucobet.generales.application.secondaryports.service.keyvault.VaultService;
 import co.edu.uco.ucobet.generales.application.secondaryports.service.notification.NotificationService;
 import co.edu.uco.ucobet.generales.application.secondaryports.service.telemetry.TelemetryService;
 import co.edu.uco.ucobet.generales.application.secondaryports.vo.EmailVO;
@@ -21,15 +22,18 @@ public final class RegisterNewCityImpl implements RegisterNewCity {
     private final RegisterNewCityRulesValidator registerNewCityRulesValidator;
     private final NotificationService notificationService;
     private final TelemetryService telemetryService;
+    private final VaultService vaultService;
 
     public RegisterNewCityImpl(final CityRepository cityRepository,
                                final RegisterNewCityRulesValidator registerNewCityRulesValidator,
                                final NotificationService notificationService,
-                               final TelemetryService telemetryService) {
+                               final TelemetryService telemetryService,
+                               final VaultService vaultService) {
         this.cityRepository = cityRepository;
         this.registerNewCityRulesValidator = registerNewCityRulesValidator;
         this.notificationService = notificationService;
         this.telemetryService = telemetryService;
+        this.vaultService = vaultService;
     }
 
     @Override
@@ -62,11 +66,11 @@ public final class RegisterNewCityImpl implements RegisterNewCity {
 
 
         //Parametros para enviar el correo
-        String subject = MessageHelper.getMessage("SUBJECT");
-        String template = MessageHelper.getMessage("BODY");
+        String subject = vaultService.getSecretValue("SUBJECT");
+        String template = vaultService.getSecretValue("BODY");
         String cityName = domain.getName();
         String body = template.replace("${cityName}", cityName);
-        String toEmail = MessageHelper.getMessage("TOEMAIL");
+        String toEmail = vaultService.getSecretValue("TOEMAIL");
 
         EmailVO email = EmailVO.create(toEmail, subject, body);
         notificationService.sendEmail(email);

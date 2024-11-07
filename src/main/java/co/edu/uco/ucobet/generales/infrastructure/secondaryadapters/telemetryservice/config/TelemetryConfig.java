@@ -1,5 +1,6 @@
 package co.edu.uco.ucobet.generales.infrastructure.secondaryadapters.telemetryservice.config;
 
+import co.edu.uco.ucobet.generales.application.secondaryports.service.keyvault.VaultService;
 import com.microsoft.applicationinsights.TelemetryClient;
 import com.microsoft.applicationinsights.TelemetryConfiguration;
 import org.springframework.context.annotation.Bean;
@@ -8,11 +9,17 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 public class TelemetryConfig {
 
+    private VaultService vaultService;
+
+    public TelemetryConfig(VaultService vaultService) {
+        this.vaultService = vaultService;
+    }
+
     @Bean
     public TelemetryClient telemetryClient() {
-        String instrumentationKey = System.getenv("APPLICATION_INSIGHTS_INSTRUMENTATION_KEY");
+        String instrumentationKey = System.getenv(vaultService.getSecretValue("instrumentationKey"));
         if (instrumentationKey == null) {
-            instrumentationKey = "e7885e64-ffb4-43bc-948e-6dca19c9a78a";
+            instrumentationKey = vaultService.getSecretValue("insightskey");
         }
         TelemetryConfiguration configuration = TelemetryConfiguration.getActive();
         configuration.setInstrumentationKey(instrumentationKey);
