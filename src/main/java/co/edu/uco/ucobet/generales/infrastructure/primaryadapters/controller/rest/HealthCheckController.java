@@ -1,6 +1,6 @@
 package co.edu.uco.ucobet.generales.infrastructure.primaryadapters.controller.rest;
 
-import co.edu.uco.ucobet.generales.crosscutting.helpers.MessageHelper;
+import co.edu.uco.ucobet.generales.application.secondaryports.service.message.MessageService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -15,7 +15,10 @@ import java.util.Map;
 @RequestMapping("/general/api/v1/health")
 public class HealthCheckController {
 
-    public HealthCheckController(MessageHelper messageHelper) {
+    private MessageService messageService;
+
+    public HealthCheckController(MessageService messageService) {
+        this.messageService = messageService;
     }
 
     @GetMapping
@@ -23,15 +26,15 @@ public class HealthCheckController {
         Map<String, Object> response = new HashMap<>();
 
         try {
-            response.put(MessageHelper.getMessage("M062"),
-                    MessageHelper.getMessage("M061"));
-            response.put(MessageHelper.getMessage("M063"), new Date());
-            response.put(MessageHelper.getMessage("M064"), MessageHelper.getMessage("M065"));
+            response.put(messageService.getMessage("M062"),
+                    messageService.getMessage("M061"));
+            response.put(messageService.getMessage("M063"), new Date());
+            response.put(messageService.getMessage("M064"), messageService.getMessage("M065"));
 
             return ResponseEntity.ok(response);
         } catch (Exception e) {
-            response.put(MessageHelper.getMessage("M062"), MessageHelper.getMessage("M066"));
-            response.put(MessageHelper.getMessage("M067"), e.getMessage());
+            response.put(messageService.getMessage("M062"), messageService.getMessage("M066"));
+            response.put(messageService.getMessage("M067"), e.getMessage());
             return ResponseEntity.status(HttpStatus.SERVICE_UNAVAILABLE).body(response);
         }
     }

@@ -7,7 +7,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 class UcobetGeneralesMsApplicationTests {
 
 	@Test
-	void contextLoads() {
+	void contextLoads() { // Noncompliant - method is empty
 	}
 
 }

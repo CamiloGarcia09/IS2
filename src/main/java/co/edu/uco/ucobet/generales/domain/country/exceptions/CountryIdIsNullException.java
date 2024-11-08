@@ -1,21 +1,22 @@
 package co.edu.uco.ucobet.generales.domain.country.exceptions;
 
+import co.edu.uco.ucobet.generales.application.secondaryports.service.message.MessageService;
 import co.edu.uco.ucobet.generales.application.secondaryports.service.telemetry.TelemetryService;
 import co.edu.uco.ucobet.generales.crosscutting.exceptions.RuleUCOBETException;
-import co.edu.uco.ucobet.generales.crosscutting.helpers.MessageHelper;
 
 public final class CountryIdIsNullException extends RuleUCOBETException {
     private static final long serialVersionUID = 1L;
 
     private CountryIdIsNullException(final String userMessage, final String technicalMessage,
-                                     final TelemetryService telemetryService) {
-        super(userMessage, technicalMessage, new Exception(), telemetryService);
+                                     final TelemetryService telemetryService,
+                                     final MessageService messageService) {
+        super(userMessage, technicalMessage, new Exception(), telemetryService, messageService);
 
     }
 
-    public static CountryIdIsNullException create(TelemetryService telemetryService){
-        var userMessage = MessageHelper.getMessage("M040");
-        var technicalMessage = MessageHelper.getMessage("M041");
-        return new CountryIdIsNullException(userMessage,technicalMessage, telemetryService);
+    public static CountryIdIsNullException create(TelemetryService telemetryService, MessageService messageService){
+        var userMessage = messageService.getMessage("M040");
+        var technicalMessage = messageService.getMessage("M041");
+        return new CountryIdIsNullException(userMessage,technicalMessage, telemetryService, messageService);
     }
 }

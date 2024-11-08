@@ -2,8 +2,8 @@ package co.edu.uco.ucobet.generales.infrastructure.primaryadapters.controller.re
 
 import co.edu.uco.ucobet.generales.application.primaryports.dto.RegisterNewCityDTO;
 import co.edu.uco.ucobet.generales.application.primaryports.interactor.city.registercity.RegisterNewCityInteractor;
+import co.edu.uco.ucobet.generales.application.secondaryports.service.message.MessageService;
 import co.edu.uco.ucobet.generales.crosscutting.exceptions.UCOBETException;
-import co.edu.uco.ucobet.generales.crosscutting.helpers.MessageHelper;
 import co.edu.uco.ucobet.generales.crosscutting.helpers.SanitizerHelper;
 import co.edu.uco.ucobet.generales.infrastructure.primaryadapters.controller.response.city.RegisterCityResponse;
 import org.springframework.http.HttpStatus;
@@ -16,9 +16,12 @@ import org.springframework.web.bind.annotation.*;
 public class RegisterNewCityController {
 
     private final RegisterNewCityInteractor registerNewCityInteractor;
+    private final MessageService messageService;
 
-    public RegisterNewCityController(final RegisterNewCityInteractor registerNewCityInteractor) {
+    public RegisterNewCityController(final RegisterNewCityInteractor registerNewCityInteractor,
+                                     final MessageService messageService) {
         this.registerNewCityInteractor=registerNewCityInteractor;
+        this.messageService=messageService;
     }
 
     @PostMapping("/registerNewCity")
@@ -30,7 +33,7 @@ public class RegisterNewCityController {
         try {
             sanitizeRegisterNewCityDTO(dto);
             registerNewCityInteractor.execute(dto);
-            var mensajeUsuario = MessageHelper.getMessage("M001");
+            var mensajeUsuario = messageService.getMessage("M001");
             cityResponse.getMensajes().add(mensajeUsuario);
 
 
@@ -41,7 +44,7 @@ public class RegisterNewCityController {
         } catch (final Exception excepcion) {
             httpStatusCode = HttpStatus.INTERNAL_SERVER_ERROR;
 
-            var mensajeUsuario = MessageHelper.getMessage("M021");
+            var mensajeUsuario = messageService.getMessage("M021");
             cityResponse.getMensajes().add(mensajeUsuario);
 
         }

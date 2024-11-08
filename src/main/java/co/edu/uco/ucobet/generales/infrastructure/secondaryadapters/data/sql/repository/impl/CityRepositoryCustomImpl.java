@@ -1,12 +1,12 @@
 package co.edu.uco.ucobet.generales.infrastructure.secondaryadapters.data.sql.repository.impl;
 
 import co.edu.uco.ucobet.generales.application.secondaryports.entity.CityEntity;
+import co.edu.uco.ucobet.generales.application.secondaryports.service.message.MessageService;
 import co.edu.uco.ucobet.generales.application.secondaryports.service.telemetry.TelemetryService;
 import co.edu.uco.ucobet.generales.crosscutting.exceptions.RepositoryUCOBETException;
 import co.edu.uco.ucobet.generales.crosscutting.helpers.ObjectHelper;
 import co.edu.uco.ucobet.generales.crosscutting.helpers.TextHelper;
 import co.edu.uco.ucobet.generales.crosscutting.helpers.UUIDHelper;
-import co.edu.uco.ucobet.generales.crosscutting.helpers.MessageHelper;
 import co.edu.uco.ucobet.generales.infrastructure.secondaryadapters.data.sql.repository.CityRepositoryCustom;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.criteria.Predicate;
@@ -19,11 +19,15 @@ public class CityRepositoryCustomImpl implements CityRepositoryCustom {
 
     private final EntityManager entityManager;
     private final TelemetryService telemetryService;
+    private final MessageService messageService;
 
 
-    public CityRepositoryCustomImpl(final EntityManager entityManager, final TelemetryService telemetryService) {
+    public CityRepositoryCustomImpl(final EntityManager entityManager,
+                                    final TelemetryService telemetryService,
+                                    final MessageService messageService) {
         this.entityManager = entityManager;
         this.telemetryService = telemetryService;
+        this.messageService = messageService;
     }
 
     @Override
@@ -51,8 +55,8 @@ public class CityRepositoryCustomImpl implements CityRepositoryCustom {
             return entityManager.createQuery(query).getResultList();
 
         }catch (final Exception exception){
-            throw RepositoryUCOBETException.create(MessageHelper.getMessage("M002"),
-                    MessageHelper.getMessage("M003"), exception, telemetryService);
+            throw RepositoryUCOBETException.create(messageService.getMessage("M002"),
+                    messageService.getMessage("M003"), exception, telemetryService);
         }
     }
 
@@ -70,8 +74,8 @@ public class CityRepositoryCustomImpl implements CityRepositoryCustom {
             return count > 0;
 
         } catch (final Exception exception) {
-            throw RepositoryUCOBETException.create(MessageHelper.getMessage("M004"),
-                     MessageHelper.getMessage("M005"), exception, telemetryService);
+            throw RepositoryUCOBETException.create(messageService.getMessage("M004"),
+                    messageService.getMessage("M005"), exception, telemetryService);
         }
     }
 }

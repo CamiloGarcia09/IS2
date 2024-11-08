@@ -2,10 +2,10 @@ package co.edu.uco.ucobet.generales.infrastructure.primaryadapters.controller.re
 
 import co.edu.uco.ucobet.generales.application.primaryports.dto.GetStateDTO;
 import co.edu.uco.ucobet.generales.application.primaryports.interactor.state.getstate.GetStatesInteractor;
+import co.edu.uco.ucobet.generales.application.secondaryports.service.message.MessageService;
 import co.edu.uco.ucobet.generales.application.secondaryports.service.telemetry.TelemetryService;
 import co.edu.uco.ucobet.generales.crosscutting.exceptions.UCOBETException;
 import co.edu.uco.ucobet.generales.infrastructure.primaryadapters.controller.response.state.GetStateResponse;
-import co.edu.uco.ucobet.generales.crosscutting.helpers.MessageHelper;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -22,10 +22,14 @@ public class GetStatesController {
 
     private final GetStatesInteractor getStatesInteractor;
     private final TelemetryService telemetryService;
+    private final MessageService messageService;
 
-    public GetStatesController(GetStatesInteractor getStatesInteractor, TelemetryService telemetryService) {
+    public GetStatesController(final GetStatesInteractor getStatesInteractor,
+                               final TelemetryService telemetryService,
+                               final MessageService messageService) {
         this.getStatesInteractor = getStatesInteractor;
         this.telemetryService = telemetryService;
+        this.messageService = messageService;
     }
 
     @GetMapping
@@ -36,12 +40,12 @@ public class GetStatesController {
         try {
             List<GetStateDTO> states = getStatesInteractor.execute(null);
             stateResponse.setDatos(states);
-            var mensajeUsuario = MessageHelper.getMessage("M022");
+            var mensajeUsuario = messageService.getMessage("M022");
             stateResponse.getMensajes().add(mensajeUsuario);
 
             Map<String, String> successProps = new HashMap<>();
-            successProps.put(MessageHelper.getMessage("M057"), String.valueOf(states.size()));
-            telemetryService.trackEvent(MessageHelper.getMessage("M058"), successProps);
+            successProps.put(messageService.getMessage("M057"), String.valueOf(states.size()));
+            telemetryService.trackEvent(messageService.getMessage("M058"), successProps);
 
         } catch (final UCOBETException excepcion) {
             httpStatusCode = HttpStatus.BAD_REQUEST;
@@ -49,7 +53,7 @@ public class GetStatesController {
 
         } catch (final Exception excepcion) {
             httpStatusCode = HttpStatus.INTERNAL_SERVER_ERROR;
-            var mensajeUsuario = MessageHelper.getMessage("M023");
+            var mensajeUsuario = messageService.getMessage("M023");
             stateResponse.getMensajes().add(mensajeUsuario);
         }
 

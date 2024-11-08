@@ -4,19 +4,19 @@ import co.edu.uco.ucobet.generales.application.secondaryports.service.message.Me
 import org.springframework.stereotype.Component;
 
 @Component
-public final class MessageHelper {
+public class MessageHelper {
 
-    private static MessageService messageService;
+    private final MessageService messageService;
 
-    MessageHelper(MessageService messageService) {
+    public MessageHelper(MessageService messageService) {
         this.messageService = messageService;
     }
 
-    public static String getMessage(String key) {
+    public String getMessage(String key) {
         return messageService.getMessage(key);
     }
 
-    public static String getMessage(String key, String defaultMessage) {
+    public String getMessage(String key, String defaultMessage) {
         return messageService.getMessage(key, defaultMessage);
     }
 }
