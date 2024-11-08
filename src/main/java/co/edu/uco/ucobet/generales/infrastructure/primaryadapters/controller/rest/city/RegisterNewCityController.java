@@ -33,6 +33,7 @@ public class RegisterNewCityController {
             var mensajeUsuario = MessageHelper.getMessage("M001");
             cityResponse.getMensajes().add(mensajeUsuario);
 
+
         } catch (final UCOBETException excepcion) {
             httpStatusCode = HttpStatus.BAD_REQUEST;
             cityResponse.getMensajes().add(excepcion.getUserMessage());

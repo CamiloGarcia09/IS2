@@ -4,6 +4,10 @@ import org.apache.commons.text.StringEscapeUtils;
 
 public final class SanitizerHelper {
 
+    // Constructor privado para prevenir la instanciación
+    private SanitizerHelper() {
+    }
+
     //Texto limpio
     public static String sanitizeInput(String input) {
         if (input == null) return null;
@@ -25,6 +29,6 @@ public final class SanitizerHelper {
     //SQL caracteres
     public static String escapeForSQL(String input) {
         if (input == null) return null;
-        return input.replaceAll("(['\";])+?", "\\\\$1");
+        return input.replaceAll("(['\";]+)", "\\\\$1");
     }
 }

@@ -8,8 +8,8 @@ public final class MessageHelper {
 
     private static MessageService messageService;
 
-    public MessageHelper(MessageService messageService) {
-        MessageHelper.messageService = messageService;
+    MessageHelper(MessageService messageService) {
+        this.messageService = messageService;
     }
 
     public static String getMessage(String key) {

@@ -1,6 +1,7 @@
 package co.edu.uco.ucobet.generales.infrastructure.secondaryadapters.data.sql.repository.impl;
 
 import co.edu.uco.ucobet.generales.application.secondaryports.entity.CityEntity;
+import co.edu.uco.ucobet.generales.application.secondaryports.service.telemetry.TelemetryService;
 import co.edu.uco.ucobet.generales.crosscutting.exceptions.RepositoryUCOBETException;
 import co.edu.uco.ucobet.generales.crosscutting.helpers.ObjectHelper;
 import co.edu.uco.ucobet.generales.crosscutting.helpers.TextHelper;
@@ -17,9 +18,12 @@ import java.util.UUID;
 public class CityRepositoryCustomImpl implements CityRepositoryCustom {
 
     private final EntityManager entityManager;
+    private final TelemetryService telemetryService;
 
-    public CityRepositoryCustomImpl(final EntityManager entityManager) {
+
+    public CityRepositoryCustomImpl(final EntityManager entityManager, final TelemetryService telemetryService) {
         this.entityManager = entityManager;
+        this.telemetryService = telemetryService;
     }
 
     @Override
@@ -48,7 +52,7 @@ public class CityRepositoryCustomImpl implements CityRepositoryCustom {
 
         }catch (final Exception exception){
             throw RepositoryUCOBETException.create(MessageHelper.getMessage("M002"),
-                    MessageHelper.getMessage("M003"), exception);
+                    MessageHelper.getMessage("M003"), exception, telemetryService);
         }
     }
 
@@ -67,7 +71,7 @@ public class CityRepositoryCustomImpl implements CityRepositoryCustom {
 
         } catch (final Exception exception) {
             throw RepositoryUCOBETException.create(MessageHelper.getMessage("M004"),
-                     MessageHelper.getMessage("M005"), exception);
+                     MessageHelper.getMessage("M005"), exception, telemetryService);
         }
     }
 }

@@ -7,33 +7,34 @@ import co.edu.uco.ucobet.generales.crosscutting.helpers.MessageHelper;
 import java.util.HashMap;
 import java.util.Map;
 
-public class NotificationUCOBETException extends UCOBETException{
+public class NotificationUCOBETException extends UCOBETException {
 
     private static final long serialVersionUID = 1L;
+    private final transient TelemetryService telemetryService;
 
     public NotificationUCOBETException(final String userMessage, final String technicalMessage,
-                                       final Exception rootException) {
+                                       final Exception rootException, final TelemetryService telemetryService) {
         super(userMessage, technicalMessage, rootException, Layer.GENERAL);
+        this.telemetryService = telemetryService;
         registerInTelemetry(userMessage, technicalMessage);
     }
 
-    public static NotificationUCOBETException create (final String userMessage, final String technicalMessage,
-                                                      final Exception rootException) {
-        return new NotificationUCOBETException(userMessage, technicalMessage, rootException);
+    public static NotificationUCOBETException create(final String userMessage, final String technicalMessage,
+                                                     final Exception rootException, final TelemetryService telemetryService) {
+        return new NotificationUCOBETException(userMessage, technicalMessage, rootException, telemetryService);
     }
 
-    public static NotificationUCOBETException create (final String userMessage, final String technicalMessage){
-        return new NotificationUCOBETException(userMessage, technicalMessage, new Exception());
+    public static NotificationUCOBETException create(final String userMessage, final String technicalMessage,
+                                                     final TelemetryService telemetryService) {
+        return new NotificationUCOBETException(userMessage, technicalMessage, new Exception(), telemetryService);
     }
 
-    public static NotificationUCOBETException create (final String userMessage){
-        return new NotificationUCOBETException(userMessage, userMessage, new Exception());
+    public static NotificationUCOBETException create(final String userMessage, final TelemetryService telemetryService) {
+        return new NotificationUCOBETException(userMessage, userMessage, new Exception(), telemetryService);
     }
 
     private void registerInTelemetry(String userMessage, String technicalMessage) {
-        TelemetryService telemetryService = GlobalTelemetry.getTelemetryService();
         if (telemetryService != null) {
-
             telemetryService.trackException(this);
 
             Map<String, String> properties = new HashMap<>();

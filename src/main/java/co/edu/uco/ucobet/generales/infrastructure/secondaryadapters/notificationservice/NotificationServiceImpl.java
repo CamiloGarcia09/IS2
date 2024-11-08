@@ -1,12 +1,12 @@
 package co.edu.uco.ucobet.generales.infrastructure.secondaryadapters.notificationservice;
 
 import co.edu.uco.ucobet.generales.application.secondaryports.service.notification.NotificationService;
+import co.edu.uco.ucobet.generales.application.secondaryports.service.telemetry.TelemetryService;
 import co.edu.uco.ucobet.generales.application.secondaryports.vo.EmailVO;
 import co.edu.uco.ucobet.generales.crosscutting.exceptions.NotificationUCOBETException;
 import co.edu.uco.ucobet.generales.crosscutting.helpers.MessageHelper;
 import com.sendgrid.Method;
 import com.sendgrid.Request;
-import com.sendgrid.Response;
 import com.sendgrid.SendGrid;
 import com.sendgrid.helpers.mail.Mail;
 import com.sendgrid.helpers.mail.objects.Content;
@@ -19,12 +19,14 @@ import java.io.IOException;
 public class NotificationServiceImpl implements NotificationService {
 
     private final String apiKey;
+    private final TelemetryService telemetryService;
 
-    @Value("${adminMail}")
+    @Value("${adminEmaill}")
     private String adminMail;
 
-    public NotificationServiceImpl(String apiKey) {
+    public NotificationServiceImpl(String apiKey, TelemetryService telemetryService) {
         this.apiKey = apiKey;
+        this.telemetryService = telemetryService;
     }
 
     @Override
@@ -40,11 +42,11 @@ public class NotificationServiceImpl implements NotificationService {
             request.setMethod(Method.POST);
             request.setEndpoint("mail/send");
             request.setBody(mail.build());
-            Response response = sg.api(request);
+            sg.api(request);
 
         } catch (IOException exception) {
             throw NotificationUCOBETException.create(MessageHelper.getMessage("M059"),
-                    MessageHelper.getMessage("M060"), exception);
+                    MessageHelper.getMessage("M060"), exception, telemetryService);
         }
     }
 }

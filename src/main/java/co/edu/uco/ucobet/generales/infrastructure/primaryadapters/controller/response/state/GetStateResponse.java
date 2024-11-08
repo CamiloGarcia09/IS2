@@ -8,7 +8,7 @@ import java.util.ArrayList;
 public class GetStateResponse extends Response<GetStateDTO> {
 
     public GetStateResponse(){
-        setMensajes(new ArrayList<String>());
+        setMensajes(new ArrayList<>());
         setDatos(new ArrayList<>());
     }
 }

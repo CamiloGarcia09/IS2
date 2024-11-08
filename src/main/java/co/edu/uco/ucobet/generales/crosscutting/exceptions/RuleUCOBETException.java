@@ -10,30 +10,31 @@ import java.util.Map;
 public class RuleUCOBETException extends UCOBETException {
 
     private static final long serialVersionUID = 1L;
+    private final transient TelemetryService telemetryService;
 
     public RuleUCOBETException(final String userMessage, final String technicalMessage,
-                               final Exception rootException) {
-        super(userMessage, technicalMessage, rootException, Layer.RULE);
+                                       final Exception rootException, final TelemetryService telemetryService) {
+        super(userMessage, technicalMessage, rootException, Layer.GENERAL);
+        this.telemetryService = telemetryService;
         registerInTelemetry(userMessage, technicalMessage);
     }
 
-    public static RuleUCOBETException create (final String userMessage, final String technicalMessage,
-                                                    final Exception rootException) {
-        return new RuleUCOBETException(userMessage, technicalMessage, rootException);
+    public static RuleUCOBETException create(final String userMessage, final String technicalMessage,
+                                                     final Exception rootException, final TelemetryService telemetryService) {
+        return new RuleUCOBETException(userMessage, technicalMessage, rootException, telemetryService);
     }
 
-    public static RuleUCOBETException create (final String userMessage, final String technicalMessage){
-        return new RuleUCOBETException(userMessage, technicalMessage, new Exception());
+    public static RuleUCOBETException create(final String userMessage, final String technicalMessage,
+                                                     final TelemetryService telemetryService) {
+        return new RuleUCOBETException(userMessage, technicalMessage, new Exception(), telemetryService);
     }
 
-    public static RuleUCOBETException create (final String userMessage){
-        return new RuleUCOBETException(userMessage, userMessage, new Exception());
+    public static RuleUCOBETException create(final String userMessage, final TelemetryService telemetryService) {
+        return new RuleUCOBETException(userMessage, userMessage, new Exception(), telemetryService);
     }
 
     private void registerInTelemetry(String userMessage, String technicalMessage) {
-        TelemetryService telemetryService = GlobalTelemetry.getTelemetryService();
         if (telemetryService != null) {
-
             telemetryService.trackException(this);
 
             Map<String, String> properties = new HashMap<>();

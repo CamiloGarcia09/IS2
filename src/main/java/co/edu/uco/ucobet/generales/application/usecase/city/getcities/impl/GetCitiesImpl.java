@@ -1,13 +1,12 @@
-package co.edu.uco.ucobet.generales.application.useCase.city.getcities.impl;
+package co.edu.uco.ucobet.generales.application.usecase.city.getcities.impl;
 
 import co.edu.uco.ucobet.generales.application.secondaryports.mapper.CityEntityMapper;
 import co.edu.uco.ucobet.generales.application.secondaryports.repository.CityRepository;
-import co.edu.uco.ucobet.generales.application.useCase.city.getcities.GetCities;
+import co.edu.uco.ucobet.generales.application.usecase.city.getcities.GetCities;
 import co.edu.uco.ucobet.generales.domain.city.CityDomain;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.stream.Collectors;
 
 
 @Service
@@ -23,7 +22,7 @@ public final class GetCitiesImpl implements GetCities {
     public List<CityDomain> execute(CityDomain domain) {
         return cityRepository.findAll().stream()
                 .map(CityEntityMapper.INSTANCE::toDomain)
-                .collect(Collectors.toList());
+                .toList();
     }
 
 }

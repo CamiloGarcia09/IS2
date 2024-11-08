@@ -8,7 +8,7 @@ import java.util.ArrayList;
 public class GetCityResponse extends Response<GetCityDTO> {
 
     public GetCityResponse(){
-        setMensajes(new ArrayList<String>());
+        setMensajes(new ArrayList<>());
         setDatos(new ArrayList<>());
     }
 }

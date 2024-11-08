@@ -1,6 +1,6 @@
-package co.edu.uco.ucobet.generales.application.useCase.city.registercity.impl.registernewcityvalidator;
+package co.edu.uco.ucobet.generales.application.usecase.city.registercity.impl.registernewcityvalidator;
 
-import co.edu.uco.ucobet.generales.application.useCase.city.registercity.RegisterNewCityIdRulesValidator;
+import co.edu.uco.ucobet.generales.application.usecase.city.registercity.RegisterNewCityIdRulesValidator;
 import co.edu.uco.ucobet.generales.domain.city.CityDomain;
 import co.edu.uco.ucobet.generales.domain.city.exceptions.CityIdDoesExistsException;
 import co.edu.uco.ucobet.generales.domain.city.rules.CityIdDoesNotExistsRule;

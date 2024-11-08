@@ -3,12 +3,11 @@ package co.edu.uco.ucobet.generales.application.primaryports.interactor.state.ge
 import co.edu.uco.ucobet.generales.application.primaryports.dto.GetStateDTO;
 import co.edu.uco.ucobet.generales.application.primaryports.interactor.state.getstate.GetStatesInteractor;
 import co.edu.uco.ucobet.generales.application.primaryports.mapper.StateMapper;
-import co.edu.uco.ucobet.generales.application.useCase.state.getstates.GetStates;
+import co.edu.uco.ucobet.generales.application.usecase.state.GetStates;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
-import java.util.stream.Collectors;
 
 @Service
 @Transactional
@@ -24,6 +23,7 @@ public class GetStatesInteractorImpl implements GetStatesInteractor {
     public List<GetStateDTO> execute(GetStateDTO data) {
         return getStates.execute(null).stream()
                 .map(StateMapper.INSTANCE::toListStateDomain)
-                .collect(Collectors.toList());
+                .toList();
     }
+
 }

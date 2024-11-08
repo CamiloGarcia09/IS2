@@ -4,14 +4,17 @@ import co.edu.uco.ucobet.generales.application.secondaryports.service.telemetry.
 import org.springframework.stereotype.Component;
 
 @Component
-public final class GlobalTelemetry {
-    private static TelemetryService telemetryService;
+public class GlobalTelemetry {
 
+    private final TelemetryService telemetryService;
+
+    // Constructor público para permitir inyección de dependencias
     public GlobalTelemetry(TelemetryService telemetryService) {
-        GlobalTelemetry.telemetryService = telemetryService;
+        this.telemetryService = telemetryService;
     }
 
-    public static TelemetryService getTelemetryService() {
+    // Método público para obtener el servicio de Telemetría sin usar una variable estática
+    public TelemetryService getTelemetryService() {
         return telemetryService;
     }
 }

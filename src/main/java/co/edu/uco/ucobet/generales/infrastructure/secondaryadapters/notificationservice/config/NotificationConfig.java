@@ -14,6 +14,6 @@ public class NotificationConfig {
 
     @Bean
     public NotificationService emailService() {
-        return new NotificationServiceImpl(apiKey);
+        return new NotificationServiceImpl(apiKey, null);
     }
 }

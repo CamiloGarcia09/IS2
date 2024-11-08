@@ -1,4 +1,4 @@
-package co.edu.uco.ucobet.generales.application.useCase.city.registercity.impl;
+package co.edu.uco.ucobet.generales.application.usecase.city.registercity.impl;
 
 import co.edu.uco.ucobet.generales.application.secondaryports.mapper.CityEntityMapper;
 import co.edu.uco.ucobet.generales.application.secondaryports.repository.CityRepository;
@@ -6,8 +6,8 @@ import co.edu.uco.ucobet.generales.application.secondaryports.service.keyvault.V
 import co.edu.uco.ucobet.generales.application.secondaryports.service.notification.NotificationService;
 import co.edu.uco.ucobet.generales.application.secondaryports.service.telemetry.TelemetryService;
 import co.edu.uco.ucobet.generales.application.secondaryports.vo.EmailVO;
-import co.edu.uco.ucobet.generales.application.useCase.city.registercity.RegisterNewCity;
-import co.edu.uco.ucobet.generales.application.useCase.city.registercity.RegisterNewCityRulesValidator;
+import co.edu.uco.ucobet.generales.application.usecase.city.registercity.RegisterNewCity;
+import co.edu.uco.ucobet.generales.application.usecase.city.registercity.RegisterNewCityRulesValidator;
 import co.edu.uco.ucobet.generales.crosscutting.helpers.MessageHelper;
 import co.edu.uco.ucobet.generales.domain.city.CityDomain;
 import org.springframework.stereotype.Service;

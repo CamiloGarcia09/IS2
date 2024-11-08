@@ -15,10 +15,7 @@ import java.util.Map;
 @RequestMapping("/general/api/v1/health")
 public class HealthCheckController {
 
-    private final MessageHelper messageHelper;
-
     public HealthCheckController(MessageHelper messageHelper) {
-        this.messageHelper = messageHelper;
     }
 
     @GetMapping
