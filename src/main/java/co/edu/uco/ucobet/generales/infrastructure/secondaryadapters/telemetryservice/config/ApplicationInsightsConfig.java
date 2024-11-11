@@ -7,11 +7,11 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 @Configuration
-public class TelemetryConfig {
+public class ApplicationInsightsConfig {
 
     private VaultService vaultService;
 
-    public TelemetryConfig(VaultService vaultService) {
+    public ApplicationInsightsConfig(VaultService vaultService) {
         this.vaultService = vaultService;
     }
 

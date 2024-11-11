@@ -7,11 +7,11 @@ import org.springframework.stereotype.Component;
 import java.util.Map;
 
 @Component
-public class TelemetryServiceImpl implements TelemetryService {
+public class ApplicationInsightsService implements TelemetryService {
 
     private final TelemetryClient telemetryClient;
 
-    public TelemetryServiceImpl(TelemetryClient telemetryClient) {
+    public ApplicationInsightsService(TelemetryClient telemetryClient) {
         this.telemetryClient = telemetryClient;
     }
 

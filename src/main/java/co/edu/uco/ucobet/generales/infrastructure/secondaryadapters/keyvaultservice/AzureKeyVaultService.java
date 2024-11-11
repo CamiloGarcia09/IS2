@@ -8,11 +8,11 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
 @Component
-public class VaultServiceImpl implements VaultService {
+public class AzureKeyVaultService implements VaultService {
 
     private final SecretClient secretClient;
 
-    public VaultServiceImpl(@Value("${azure.keyvault.url}") String urlVault){
+    public AzureKeyVaultService(@Value("${azure.keyvault.url}") String urlVault){
         this.secretClient = new SecretClientBuilder().vaultUrl(urlVault)
                 .credential(new DefaultAzureCredentialBuilder().build())
                 .buildClient();

@@ -31,3 +31,6 @@ build/
 
 ### VS Code ###
 .vscode/
+
+#Personalizadas
+src/main/resources/localhost.p12

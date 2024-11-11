@@ -5,11 +5,11 @@ import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Service;
 
 @Service
-public class MessageServiceImpl implements MessageService {
+public class RedisService implements MessageService {
 
     private final RedisTemplate<String, String> redisTemplate;
 
-    public MessageServiceImpl(RedisTemplate<String, String> redisTemplate) {
+    public RedisService(RedisTemplate<String, String> redisTemplate) {
         this.redisTemplate = redisTemplate;
     }
 

@@ -16,7 +16,7 @@ import org.springframework.beans.factory.annotation.Value;
 import java.io.IOException;
 
 
-public class NotificationServiceImpl implements NotificationService {
+public class SendgridService implements NotificationService {
 
     private final String apiKey;
     private final TelemetryService telemetryService;
@@ -25,9 +25,9 @@ public class NotificationServiceImpl implements NotificationService {
     @Value("${adminEmaill}")
     private String adminMail;
 
-    public NotificationServiceImpl(final String apiKey,
-                                   final TelemetryService telemetryService,
-                                   final MessageService messageService) {
+    public SendgridService(final String apiKey,
+                           final TelemetryService telemetryService,
+                           final MessageService messageService) {
         this.apiKey = apiKey;
         this.telemetryService = telemetryService;
         this.messageService = messageService;
